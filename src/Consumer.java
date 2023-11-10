@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Consumer {
@@ -12,8 +14,42 @@ public class Consumer {
             System.out.println("P(SРазрЧт)");
             outerLoop:
             while (true) {
-                File file = new File("SРазрЧт");
-                writeZero(file);
+                String file ="SРазрЧт";
+                try {
+
+                    // Создаем объект FileReader и BufferedReader для чтения файла
+                    FileReader fileReader = new FileReader(file);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    StringBuilder newContent = new StringBuilder();
+                    String line;
+
+                    // Бесконечный цикл
+                    outerParam:
+                    while (true) {
+                        // Читаем файл построчно
+                        while ((line = bufferedReader.readLine()) != null) {
+                            // Если в файле записан "0", выводим "Ожидание"
+                            if ("0".equals(line.trim())) {
+                                System.out.println("Ожидание на семафоре");
+                                scanner.nextLine();
+
+                            } else if ("1".equals(line.trim())) {
+                                replaceTextInFile(file, "1", "0");
+                                System.out.println("Процесс заблокирован");
+                                break outerParam;
+                            } else {
+                                // Добавьте обработку других значений, если необходимо
+                                System.out.println("Неожиданное значение в файле: " + line);
+                            }
+                        }
+
+                        // Сбрасываем указатель в начало файла, чтобы можно было снова читать его с начала
+                        fileReader = new FileReader(file);
+                        bufferedReader = new BufferedReader(fileReader);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break outerLoop;
             }
 
@@ -22,8 +58,43 @@ public class Consumer {
 
             outerLoop:
             while (true) {
-                File file = new File("SВзИскл");
-                writeZero(file);
+                String file = "SВзИскл";
+
+                try {
+
+                    // Создаем объект FileReader и BufferedReader для чтения файла
+                    FileReader fileReader = new FileReader(file);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    StringBuilder newContent = new StringBuilder();
+                    String line;
+
+                    // Бесконечный цикл
+                    outerParam:
+                    while (true) {
+                        // Читаем файл построчно
+                        while ((line = bufferedReader.readLine()) != null) {
+                            // Если в файле записан "0", выводим "Ожидание"
+                            if ("0".equals(line.trim())) {
+                                System.out.println("Ожидание на семафоре");
+                                scanner.nextLine();
+
+                            } else if ("1".equals(line.trim())) {
+                                replaceTextInFile(file, "1", "0");
+                                System.out.println("Процесс заблокирован");
+                                break outerParam;
+                            } else {
+                                // Добавьте обработку других значений, если необходимо
+                                System.out.println("Неожиданное значение в файле: " + line);
+                            }
+                        }
+
+                        // Сбрасываем указатель в начало файла, чтобы можно было снова читать его с начала
+                        fileReader = new FileReader(file);
+                        bufferedReader = new BufferedReader(fileReader);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break outerLoop;
             }
 
@@ -36,89 +107,101 @@ public class Consumer {
             System.out.println("V(SВзИскл)");
             outerLoop:
             while (true) {
-                File file = new File("SВзИскл");
-                writeOne(file);
+                String file ="SВзИскл";
+                try {
+
+                    // Создаем объект FileReader и BufferedReader для чтения файла
+                    FileReader fileReader = new FileReader(file);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    StringBuilder newContent = new StringBuilder();
+                    String line;
+
+                    // Бесконечный цикл
+                    outerParam:
+                    while (true) {
+                        // Читаем файл построчно
+                        while ((line = bufferedReader.readLine()) != null) {
+
+                            //if ("0".equals(line.trim())) {
+                            //        System.out.println("Ожидание на семафоре");
+                            //        scanner.nextLine();
+                            //}
+                            if ("0".equals(line.trim())) {
+                                replaceTextInFile(file, "0", "1");
+                                System.out.println("Процесс разблокирован");
+                                break outerParam;
+                            }
+                        }
+
+                        // Сбрасываем указатель в начало файла, чтобы можно было снова читать его с начала
+                        fileReader = new FileReader(file);
+                        bufferedReader = new BufferedReader(fileReader);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break outerLoop;
             }
             scanner.nextLine();
             System.out.println("V(SРазрЗап)");
             outerLoop:
             while (true) {
-                File file = new File("SРазрЗап");
-                writeOne(file);
+                String file = "SРазрЗап";
+                try {
+
+                    // Создаем объект FileReader и BufferedReader для чтения файла
+                    FileReader fileReader = new FileReader(file);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    StringBuilder newContent = new StringBuilder();
+                    String line;
+
+                    // Бесконечный цикл
+                    outerParam:
+                    while (true) {
+                        // Читаем файл построчно
+                        while ((line = bufferedReader.readLine()) != null) {
+
+                            //if ("0".equals(line.trim())) {
+                            //        System.out.println("Ожидание на семафоре");
+                            //        scanner.nextLine();
+                            //}
+                            if ("0".equals(line.trim())) {
+                                replaceTextInFile(file, "0", "1");
+                                System.out.println("Процесс разблокирован");
+                                break outerParam;
+                            }
+                        }
+
+                        // Сбрасываем указатель в начало файла, чтобы можно было снова читать его с начала
+                        fileReader = new FileReader(file);
+                        bufferedReader = new BufferedReader(fileReader);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break outerLoop;
             }
         }
     }
-
-    public static void writeZero(File file) {
-
+    private static void replaceTextInFile(String filename, String oldText, String newText) {
         try {
-            // Чтение файла
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
             StringBuilder content = new StringBuilder();
             String line;
-            boolean containsOne = false;
 
             while ((line = reader.readLine()) != null) {
-                // Проверка, содержится ли "1" в строке
-                if (line.contains("1")) {
-                    containsOne = true;
-                    // Замена "1" на "0"
-                    line = line.replace("1", "0");
-                }
-                content.append(line).append("\n");
+                content.append(line).append(System.lineSeparator());
             }
 
             reader.close();
 
-            // Запись изменений обратно в файл
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write(content.toString());
+            String updatedContent = content.toString().replaceFirst(oldText, newText);
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            writer.write(updatedContent);
             writer.close();
-
-            if (containsOne) {
-                System.out.println("Процесс заблокирован");
-            } else {
-                System.out.println("Ожидание на семафоре");
-            }
-
         } catch (IOException e) {
-            System.err.println("Ошибка при чтении/записи файла: " + e.getMessage());
-        }
-    }
-
-    public static void writeOne(File file) {
-        try {
-            // Чтение файла
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            StringBuilder content = new StringBuilder();
-            String line;
-            boolean containsOne = false;
-
-            while ((line = reader.readLine()) != null) {
-                // Проверка, содержится ли "0" в строке
-                if (line.contains("0")) {
-                    containsOne = true;
-                    // Замена "0" на "1"
-                    line = line.replace("0", "1");
-                }
-                content.append(line).append("\n");
-            }
-
-            reader.close();
-
-            // Запись изменений обратно в файл
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write(content.toString());
-            writer.close();
-
-            if (containsOne) {
-                System.out.println("Процесс разблокирован");
-            }
-
-        } catch (IOException e) {
-            System.err.println("Ошибка при чтении/записи файла: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
